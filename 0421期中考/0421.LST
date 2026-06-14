@@ -1,0 +1,216 @@
+Intel-8051 Macro Assembler - Version 1.00
+
+      1    0000                           	ORG	0000H
+      2    0000                           
+      3    0000     75 90 FE              LOOP: MOV	P1,#11111110B
+      4    0003     30 A0 35              	JNB	P2.0,KEY0
+      5    0006     30 A1 36              	JNB	P2.1,KEY1
+      6    0009     30 A2 37              	JNB	P2.2,KEY2
+      7    000C     30 A3 38              	JNB	P2.3,KEY3
+      8    000F     75 90 FD              	MOV	P1,#11111101B
+      9    0012     30 A0 36              	JNB	P2.0,KEY4
+     10    0015     30 A1 37              	JNB	P2.1,KEY5
+     11    0018     30 A2 38              	JNB	P2.2,KEY6
+     12    001B     30 A3 39              	JNB	P2.3,KEY7
+     13    001E     75 90 FB              	MOV	P1,#11111011B
+     14    0021     30 A0 38              	JNB	P2.0,KEY8
+     15    0024     30 A1 3A              	JNB	P2.1,KEY9
+     16    0027     30 A2 3C              	JNB	P2.2,KEYA
+     17    002A     30 A3 3E              	JNB	P2.3,KEYB
+     18    002D     75 90 F7              	MOV	P1,#11110111B
+     19    0030     30 A0 3D              	JNB	P2.0,KEYC
+     20    0033     30 A1 3E              	JNB	P2.1,KEYD
+     21    0036     30 A2 3F              	JNB	P2.2,KEYE
+     22    0039     01 00                 	AJMP 	LOOP
+     23    003B                           
+     24    003B     01 7C                 KEY0:	AJMP	NI
+     25    003D     01 00                 	AJMP	LOOP
+     26    003F     01 C4                 KEY1:	AJMP	N2
+     27    0041     01 00                 	AJMP	LOOP
+     28    0043     21 25                 KEY2:	AJMP	N3
+     29    0045     01 00                 	AJMP	LOOP
+     30    0047     21 31                 KEY3:	AJMP	N4 
+     31    0049     01 00                 	AJMP	LOOP
+     32    004B     21 71                 KEY4:	AJMP	N5
+     33    004D     01 00                 	AJMP	LOOP
+     34    004F     21 75                 KEY5:	AJMP	N6
+     35    0051     01 00                 	AJMP	LOOP
+     36    0053     21 79                 KEY6:	AJMP	N7
+     37    0055     01 00                 	AJMP	LOOP
+     38    0057     75 80 08              KEY7:	MOV	P0,#00001000B
+     39    005A     01 00                 	AJMP	LOOP
+     40    005C     75 80 09              KEY8:	MOV	P0,#00001001B
+     41    005F     01 00                 	AJMP	LOOP
+     42    0061     75 80 0A              KEY9:	MOV	P0,#00001010B
+     43    0064     01 00                 	AJMP	LOOP
+     44    0066     75 80 0B              KEYA:	MOV	P0,#00001011B
+     45    0069     01 00                 	AJMP	LOOP
+     46    006B     75 80 0C              KEYB:	MOV	P0,#00001100B
+     47    006E     01 00                 	AJMP	LOOP
+     48    0070     21 7D                 KEYC:	AJMP	N8
+     49    0072     01 00                 	AJMP	LOOP
+     50    0074     21 81                 KEYD:	AJMP	N9
+     51    0076     01 00                 	AJMP	LOOP
+     52    0078     21 85                 KEYE:	AJMP 	N10
+     53    007A     01 00                 	AJMP	LOOP
+     54    007C                           
+     55    007C     75 80 01              NI:	MOV	P0,#00000001B
+     56    007F     31 A4                 	ACALL DELAY
+     57    0081     75 80 02              	MOV	P0,#00000010B
+     58    0084     31 A4                 	ACALL DELAY
+     59    0086     75 80 04              	MOV	P0,#00000100B
+     60    0089     31 A4                 	ACALL DELAY
+     61    008B     75 80 08              	MOV	P0,#00001000B
+     62    008E     31 A4                 	ACALL DELAY
+     63    0090     75 80 10              	MOV	P0,#00010000B
+     64    0093     31 A4                 	ACALL DELAY
+     65    0095     75 80 20              	MOV	P0,#00100000B
+     66    0098     31 A4                 	ACALL DELAY
+     67    009A     75 80 40              	MOV	P0,#01000000B
+     68    009D     31 A4                 	ACALL DELAY
+     69    009F     75 80 80              	MOV	P0,#10000000B
+     70    00A2     31 A4                 	ACALL DELAY
+     71    00A4     75 80 40              	MOV	P0,#01000000B
+     72    00A7     31 A4                 	ACALL DELAY
+     73    00A9     75 80 20              	MOV	P0,#00100000B
+     74    00AC     31 A4                 	ACALL DELAY
+     75    00AE     75 80 10              	MOV	P0,#00010000B
+     76    00B1     31 A4                 	ACALL DELAY
+     77    00B3     75 80 08              	MOV	P0,#00001000B
+     78    00B6     31 A4                 	ACALL DELAY
+     79    00B8     75 80 04              	MOV	P0,#00000100B
+     80    00BB     31 A4                 	ACALL DELAY
+     81    00BD     75 80 02              	MOV	P0,#00000010B
+     82    00C0     31 A4                 	ACALL DELAY
+     83    00C2     01 00                       AJMP LOOP
+     84    00C4                           ;
+     85    00C4                           
+     86    00C4     75 80 81              N2:	MOV	P0,#10000001B
+     87    00C7     31 A4                 	ACALL DELAY
+     88    00C9     75 80 C3              	MOV	P0,#11000011B
+     89    00CC     31 A4                 	ACALL DELAY
+     90    00CE     75 80 E7              	MOV	P0,#11100111B
+     91    00D1     31 A4                 	ACALL DELAY
+     92    00D3     75 80 FF              	MOV	P0,#11111111B
+     93    00D6     31 A4                 	ACALL DELAY
+     94    00D8     75 80 E7              	MOV	P0,#11100111B
+     95    00DB     31 A4                 	ACALL DELAY
+     96    00DD     75 80 C3              	MOV	P0,#11000011B
+     97    00E0     31 A4                 	ACALL DELAY
+     98    00E2     75 80 81              	MOV	P0,#10000001B
+     99    00E5     31 A4                 	ACALL DELAY
+    100    00E7     75 80 00              	MOV	P0,#00000000B
+    101    00EA     31 A4                 	ACALL DELAY
+    102    00EC     75 80 81              	MOV	P0,#10000001B
+    103    00EF     31 A4                 	ACALL DELAY
+    104    00F1     75 80 C3              	MOV	P0,#11000011B
+    105    00F4     31 A4                 	ACALL DELAY
+    106    00F6     75 80 E7              	MOV	P0,#11100111B
+    107    00F9     31 A4                 	ACALL DELAY
+    108    00FB     75 80 FF              	MOV	P0,#11111111B
+    109    00FE     31 A4                 	ACALL DELAY
+    110    0100     75 80 E7              	MOV	P0,#11100111B
+    111    0103     31 A4                 	ACALL DELAY
+    112    0105     75 80 C3              	MOV	P0,#11000011B
+    113    0108     31 A4                 	ACALL DELAY
+    114    010A     75 80 81              	MOV	P0,#10000001B
+    115    010D     31 A4                 	ACALL DELAY
+    116    010F     75 80 00              	MOV	P0,#00000000B
+    117    0112     31 A4                 	ACALL DELAY
+    118    0114     75 80 FF              	MOV	P0,#11111111B
+    119    0117     31 A4                 	ACALL DELAY
+    120    0119     75 80 00              	MOV	P0,#00000000B
+    121    011C     31 A4                 	ACALL DELAY
+    122    011E     75 80 FF              	MOV	P0,#11111111B
+    123    0121     31 A4                 	ACALL DELAY
+    124    0123     01 00                       AJMP LOOP
+    125    0125                           ;
+    126    0125     75 80 AA              N3:	MOV	P0,#10101010B
+    127    0128     31 A4                 	ACALL DELAY
+    128    012A     75 80 00              	MOV	P0,#00000000B
+    129    012D     31 A4                 	ACALL DELAY
+    130    012F     01 00                       AJMP LOOP
+    131    0131                           ;
+    132    0131     75 80 81              N4:	MOV	P0,#10000001B
+    133    0134     31 AD                 	ACALL DELAY05
+    134    0136     31 AD                 	ACALL DELAY05
+    135    0138     31 AD                 	ACALL DELAY05
+    136    013A     31 AD                 	ACALL DELAY05
+    137    013C     75 80 82              	MOV	P0,#10000010B
+    138    013F     31 AD                 	ACALL DELAY05
+    139    0141     75 80 80              	MOV	P0,#10000000B
+    140    0144     31 AD                 	ACALL DELAY05
+    141    0146     75 80 82              	MOV	P0,#10000010B
+    142    0149     31 AD                 	ACALL DELAY05
+    143    014B     75 80 80              	MOV	P0,#10000000B
+    144    014E     31 AD                 	ACALL DELAY05
+    145    0150     75 80 24              	MOV	P0,#00100100B
+    146    0153     31 AD                 	ACALL DELAY05
+    147    0155     31 AD                 	ACALL DELAY05
+    148    0157     31 AD                 	ACALL DELAY05
+    149    0159     31 AD                 	ACALL DELAY05
+    150    015B     75 80 44              	MOV	P0,#01000100B
+    151    015E     31 AD                 	ACALL DELAY05
+    152    0160     75 80 04              	MOV	P0,#00000100B
+    153    0163     31 AD                 	ACALL DELAY05
+    154    0165     75 80 44              	MOV	P0,#01000100B
+    155    0168     31 AD                 	ACALL DELAY05
+    156    016A     75 80 04              	MOV	P0,#00000100B
+    157    016D     31 AD                 	ACALL DELAY05
+    158    016F     01 00                 	AJMP LOOP
+    159    0171                           ;
+    160    0171     7E 55                 N5: 	MOV	R6,#85
+    161    0173     21 8F                 	AJMP	OUTPUT
+    162    0175     7E 4B                 N6:	MOV	R6,#75
+    163    0177     21 8F                 	AJMP	OUTPUT
+    164    0179     7E 43                 N7:	MOV	R6,#67
+    165    017B     21 8F                 	AJMP	OUTPUT
+    166    017D     7E 64                 N8:   MOV	R6,#100
+    167    017F     21 8F                 	AJMP	OUTPUT
+    168    0181     7E 5F                 N9:	MOV	R6,#95
+    169    0183     21 8F                 	AJMP	OUTPUT
+    170    0185     7E 64                 N10:	MOV	R6,#100
+    171    0187     7E 3D                 	MOV	R6,#61
+    172    0189     7D 64                 	MOV	R5,#100
+    173    018B     31 8F                 	ACALL	OUTPUT
+    174    018D     01 00                 	AJMP	LOOP
+    175    018F                           
+    176    018F                           
+    177    018F     C2 A6                 OUTPUT: CLR		P2.6
+    178    0191     31 99                 	  ACALL	DELAY26
+    179    0193     D2 A6                 	  SETB	P2.6
+    180    0195     31 99                 	  ACALL 	DELAY26
+    181    0197     01 00                 	  AJMP	LOOP
+    182    0199                           ;
+    183    0199                           
+    184    0199                           
+    185    0199     8E F0                 DELAY26: 	 MOV		B,R6
+    186    019B     7F 06                 DL:	 	 MOV		R7,#6
+    187    019D     DF FE                 	  	 DJNZ		R7,$
+    188    019F     DE FA                 	 	 DJNZ		R6,DL
+    189    01A1     AE F0                 	 	 MOV		R6,B
+    190    01A3     22                    	 	 RET
+    191    01A4                           
+    192    01A4     7E FA                 DELAY:	MOV	R6,#250
+    193    01A6     7F C8                 DL1:		MOV	R7,#200
+    194    01A8     DF FE                 DL2:		DJNZ	R7,DL2
+    195    01AA     DE FA                 		DJNZ	R6,DL1
+    196    01AC     22                    		RET
+    197    01AD                           
+    198    01AD     7D 05                 DELAY05:	MOV	R5,#5
+    199    01AF     7E FA                 DL3:		MOV	R6,#250
+    200    01B1     7F C8                 DL4:		MOV	R7,#200
+    201    01B3     DF FE                 DL5:		DJNZ 	R7,DL5
+    202    01B5     DE FA                 		DJNZ	R6,DL4
+    203    01B7     DD F6                 		DJNZ	R5,DL3
+    204    01B9     22                    		RET
+    205    01BA                           
+    206    01BA     7D 19                 DELAY25:	MOV	R5,#25
+    207    01BC     7E FA                 DL6:		MOV	R6,#250
+    208    01BE     7F C8                 DL7:		MOV	R7,#200
+    209    01C0     DF FE                 DL8:		DJNZ 	R7,DL8
+    210    01C2     DE FA                 		DJNZ	R6,DL7
+    211    01C4     DD F6                 		DJNZ	R5,DL6
+    212    01C6     22                    		RET
+    213    01C7                           
+    214    01C7                           	END
